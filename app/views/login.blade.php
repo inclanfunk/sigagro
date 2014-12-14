@@ -72,11 +72,11 @@
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
-				<h1 class="txt-color-red login-header-big">SmartAdmin</h1>
+				<h1 class="txt-color-red login-header-big">Sigagro</h1>
 				<div class="hero">
 
 					<div class="pull-left login-desc-box-l">
-						<h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of SmartAdmin, everywhere you go!</h4>
+						<h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of Sigagro, everywhere you go!</h4>
 
 
 					<!--

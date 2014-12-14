@@ -2,8 +2,7 @@
 
 class DashboardController extends BaseController {
 
-
-	public function getIndex(){
+	public function Index(){
 		return View::make('admin.index');
 
 	}

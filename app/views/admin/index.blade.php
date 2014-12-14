@@ -6,7 +6,6 @@
 @section('content')
 
 
-
-    This is content
+        HERE IS THE CONTENT !
 
 @stop

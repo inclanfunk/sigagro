@@ -20,7 +20,9 @@ Route::get('/logout' , 'LoginController@logout');
 Route::group(['before' => 'auth'] , function(){
 
 	// dashboard
-	Route::controller('dashboard','DashboardController'); // Kontrol Paneli Bölümü
+	Route::resource('dashboard','DashboardController'); // Dashboard
+
+
 
 
 
