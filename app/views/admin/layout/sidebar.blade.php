@@ -5,7 +5,7 @@
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it -->
 
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-						<img src="img/avatars/sunny.png" alt="me" class="online" />
+						<img src="{{URL::to('img/avatars/sunny.png')}}" alt="me" class="online" />
 						<span>
 							john.doe
 						</span>
@@ -32,24 +32,26 @@
 					<li>
 						<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 					</li>
-                <!--
+
 					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>
+						<a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">User Managment</span></a>
 						<ul>
 							<li>
-								<a href="flot.html">Flot Chart</a>
+								<a href="{{ URL::to('sadmin/user_create') }}">Create User</a>
 							</li>
 							<li>
-								<a href="morris.html">Morris Charts</a>
+								<a href="flot.html">User List</a>
 							</li>
-							<li>
-								<a href="inline-charts.html">Inline Charts</a>
-							</li>
-							<li>
-								<a href="dygraphs.html">Dygraphs <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
-							</li>
+
+
+
+
 						</ul>
 					</li>
+
+
+
+	             <!--
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
 						<ul>
