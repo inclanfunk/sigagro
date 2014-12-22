@@ -6,7 +6,8 @@ class DashboardController extends BaseController {
 
 		return View::make('admin.index');
 
-
 	}
+
+
 
 }

@@ -7,7 +7,7 @@
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 						<img src="{{URL::to('img/avatars/sunny.png')}}" alt="me" class="online" />
 						<span>
-							john.doe
+						  <?php $users =  Sentry::getUser(); ?>  {{ $users->first_name }}
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a>
@@ -30,9 +30,11 @@
 
 				<ul>
 					<li>
-						<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+						<a href="{{ URL::to('dashboards') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 					</li>
 
+
+                    @if(Sentry::getUser()->hasAnyAccess(['system']))
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">User Managment</span></a>
 						<ul>
@@ -40,15 +42,28 @@
 								<a href="{{ URL::to('sadmin/user_create') }}">Create User</a>
 							</li>
 							<li>
-								<a href="flot.html">User List</a>
+								<a href="{{ URL::to('users') }}">User List</a>
 							</li>
-
-
-
 
 						</ul>
 					</li>
+                    @endif
 
+
+                    @if(Sentry::getUser()->hasAnyAccess(['system']))
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw  fa-globe"></i> <span class="menu-item-parent">Farm Managment</span></a>
+						<ul>
+							<li>
+								<a href="{{ URL::to('farms/create') }}">Create Farm</a>
+							</li>
+							<li>
+								<a href="{{ URL::to('farms') }}">Farm List</a>
+							</li>
+
+						</ul>
+					</li>
+                    @endif
 
 
 	             <!--
@@ -189,6 +204,12 @@
 					<li>
 						<a href="{{ URL::to('calendar.html') }}"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
 					</li>
+
+					<li>
+						<a href="{{ URL::to('calendar.html') }}"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Forum</span></a>
+					</li>
+
+
 
 			<!--		<li>
 						<a href="widgets.html"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Widgets</span></a>

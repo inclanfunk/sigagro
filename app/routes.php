@@ -22,7 +22,8 @@ Route::group(['before' => 'auth'] , function(){
 	Route::resource('dashboard','DashboardController'); // Dashboard
 	Route::get('sadmin/user_create','UserCreatorController@showForm'); // User Managment
 	Route::post('sadmin/user_create','UserCreatorController@sendForm'); // User Managment
-
+	Route::resource('users' , 'UserManagmentController');
+	Route::resource('farms' , 'FarmManagmentController');
 
 });
 
@@ -32,6 +33,9 @@ Route::group(['before' => 'auth'] , function(){
 Route::get('/createuser' , function(){
 	//Sentry::createUser()
 });
+
+
+
 
 Route::get('/giveperm' , function(){
 

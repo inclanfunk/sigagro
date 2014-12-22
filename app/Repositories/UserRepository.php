@@ -5,10 +5,12 @@ use \Sentry;
 
 class UserRepository {
 
-
+	/**
+	 * @param array $credentials
+	 * Create a New User
+	 *
+	 */
 	public function UserSave(array $credentials){
-
-
 
 		try
 		{
@@ -23,7 +25,6 @@ class UserRepository {
 				'activated'      => true,
 
 			));
-
 			// Find the group using the group id
 			$adminGroup = Sentry::findGroupByName($credentials['roles']);
 
@@ -31,33 +32,86 @@ class UserRepository {
 			$user->addGroup($adminGroup);
 
 			return true;
-
 		}
-		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+		catch (\Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{
-			echo 'Login field is required.';
+			\Session::flash('error_msg', 'Email field is required...');
 		}
-		catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+		catch (\Cartalyst\Sentry\Users\PasswordRequiredException $e)
 		{
-			echo 'Password field is required.';
+			\Session::flash('error_msg', 'Password field is required...');
 		}
-		catch (Cartalyst\Sentry\Users\UserExistsException $e)
+		catch (\Cartalyst\Sentry\Users\UserExistsException $e)
 		{
-			echo 'User with this login already exists.';
+			\Session::flash('error_msg', 'User with this email already exists.');
 		}
-		catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+		catch (\Cartalyst\Sentry\Groups\GroupNotFoundException $e)
 		{
-			echo 'Group was not found.';
+			\Session::flash('error_msg', 'Login field is required...');
 		}
-
-
-
-
-
-
-
 	}
 
+
+	/**
+	 * @return array
+	 * gets All Users
+	 *
+	 */
+	public function listAll(){
+
+		$users = Sentry::findAllUsers();
+
+		return $users;
+	}
+
+
+	/**
+	 * @param $userid
+	 * @return \Cartalyst\Sentry\Users\UserInterface
+	 * gets user by Id
+	 */
+	public function findById($userid){
+
+		$user = Sentry::findUserById($userid);
+		return $user;
+	}
+
+	public function updateUser($userid , array $credentials){
+
+		$user = Sentry::findUserById($userid);
+
+		$user->email = $credentials['email'];
+		$user->first_name = $credentials['first_name'];
+		$user->last_name = $credentials['last_name'];
+		$user->phone = $credentials['phone'];
+
+		if($credentials['password']) {
+			$user->password = $credentials['password'];
+		}
+		$user->save();
+
+		if($user->save()){
+			return true;
+		}
+	}
+
+
+	public function deleteUser($userid){
+
+		try
+		{
+			// Find the user using the user id
+			$user = Sentry::findUserById($userid);
+
+			// Delete the user
+			$user->delete();
+		}
+		catch (\Cartalyst\Sentry\Users\UserNotFoundException $e)
+		{
+			\Session::flash('error_msg', 'User was not found');
+		}
+
+	}
 
 
 

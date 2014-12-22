@@ -1,15 +1,15 @@
 <?php
 
-use Repositories\UserRepository;
+use Repositories\FarmRepository;
 
-class UserManagmentController extends \BaseController {
+class FarmManagmentController extends \BaseController {
 
+	public function __construct(FarmRepository $farmRepository){
 
-	public function __construct(UserRepository $userRepository){
-
-		$this->userRepository = $userRepository;
+		$this->farmRepository = $farmRepository;
 
 	}
+
 
 
 	/**
@@ -19,9 +19,10 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function index()
 	{
-		// Get All Users
-		$users = $this->userRepository->listAll();
-		return View::make('user.index' , compact('users'));
+		// show list of farms
+		$farms = $this->farmRepository->listFarms();
+
+		return View::make('farm.index', compact('farms'));
 	}
 
 
@@ -32,7 +33,12 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// Show Farm Create Form
+
+		$managers = $this->farmRepository->listManagers();
+
+		return View::make('farm.create' , compact('managers'));
+
 	}
 
 
@@ -44,6 +50,18 @@ class UserManagmentController extends \BaseController {
 	public function store()
 	{
 		//
+
+		$credentials = Input::all();
+
+		$store = $this->farmRepository->createFarm($credentials);
+
+		if($store){
+			return Redirect::back()->with('message','Farm is created.');
+		}else{
+			return Redirect::back()->with('message','Whoops, looks like something went wrong!');
+		}
+
+
 	}
 
 
@@ -56,9 +74,6 @@ class UserManagmentController extends \BaseController {
 	public function show($id)
 	{
 		//
-
-
-
 	}
 
 
@@ -70,9 +85,9 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//find user
-		$user =	$this->userRepository->findById($id);
-		return View::make('user.edit',compact('user'));
+		//find farm
+		$farm =	$this->farmRepository->findById($id);
+		return View::make('farm.edit',compact('farm'));
 	}
 
 
@@ -84,19 +99,18 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		// Validate
-
-		// Update the User
-
+		//
 		$credentials = Input::all();
 
-		$update = $this->userRepository->updateUser($id,$credentials);
+		$update = $this->farmRepository->updateFarm($id,$credentials);
 
 		if($update){
 			return Redirect::back()->with('message','Update is OK');
 		}else{
 			return Redirect::back()->with('message','Whoops, looks like something went wrong!');
 		}
+
+
 
 
 	}
@@ -110,12 +124,12 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		// delete user
-		$delete = $this->userRepository->deleteUser($id);
+		// delete the farm
+		$farm = $this->farmRepository->deleteFarm($id);
 
-		if(!$delete){
+		if(!$farm){
 			return Redirect::back()->with('message','Delete is OK');
-		}else{
+		}else {
 			return Redirect::back()->with('message','Whoops, looks like something went wrong!');
 		}
 

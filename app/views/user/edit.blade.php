@@ -1,7 +1,8 @@
 @extends('admin.layout.master')
 
-
 @section('content')
+
+
 <!-- Widget ID (each widget will need unique ID)-->
 			<div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
 				<!-- widget options:
@@ -38,35 +39,25 @@
 					<!-- widget content -->
 					<div class="widget-body no-padding">
 
-						<form id="order-form" class="smart-form" novalidate="novalidate" action="{{ URL::to('sadmin/user_create') }}" method="post" >
+						<form id="order-form" method="post" class="smart-form" novalidate="novalidate" action="{{ URL::to('users/'.$user->id) }}"  >
 							<header>
-								Create a New User
+								Edit User
 							</header>
 
 							<fieldset>
-								<div class="row">
-                                    <section class="col col-10">
-                                        <label class="select">
-                                            <select name="roles">
-                                                <option value="0" selected="" disabled="">Please Select a User Role</option>
-                                                <option value="Admin">Distributor</option>
-                                                <option value="Client">Manager</option>
-                                                <option value="Viewer">Viewer</option>
-                                                <option value="Advisor">Advisor</option>
-                                                <option value="Editor">Editor</option>
-                                            </select> <i></i> </label>
-                                    </section>
-                                </div>
+
+				                <!-- For Larevel PUT METHOD ! -->
+				                <input type="hidden" name="_method" value="put" />
 
 								<div class="row">
 									<section class="col col-6">
 										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="text" name="first_name" placeholder="First Name" required>
+											<input type="text" name="first_name" value="{{ $user->first_name }}" placeholder="First Name"  required>
 										</label>
 									</section>
 									<section class="col col-6">
 										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="text" name="last_name" placeholder="Last Name">
+											<input type="text" name="last_name" value="{{ $user->last_name }}" placeholder="Last Name" >
 										</label>
 									</section>
 								</div>
@@ -74,12 +65,12 @@
 								<div class="row">
 									<section class="col col-6">
 										<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-											<input type="email" name="email" placeholder="E-mail">
+											<input type="email" name="email" value="{{ $user->email }}" placeholder="Email" >
 										</label>
 									</section>
 									<section class="col col-6">
 										<label class="input"> <i class="icon-append fa fa-phone"></i>
-											<input type="tel" name="phone" placeholder="Phone" data-mask="(999) 999-9999">
+											<input type="tel" name="phone" value="{{ $user->phone }}" data-mask="(999) 999-9999" placeholder="Phone" >
 										</label>
 									</section>
 								</div>
@@ -92,7 +83,7 @@
                                     </section>
                                     <section class="col col-6">
                                         <label class="input"> <i class="icon-append fa  fa-lock"></i>
-                                            <input type="password" name="email-confirm" placeholder="Confirm Password">
+                                            <input type="password" name="password-confirm" placeholder="Confirm Password">
                                         </label>
                                     </section>
                                </div>
@@ -117,7 +108,7 @@
 							</fieldset>
 							<footer>
 								<button type="submit" class="btn btn-primary">
-									Create User
+									Update
 								</button>
 							</footer>
 						</form>
@@ -125,10 +116,6 @@
 					</div>
 					<!-- end widget content -->
 
-
-                        @if(Session::has('error_msg'))
-                                        <p class="alert alert-danger">{{Session::get('error_msg')}}</p>
-                        @endif
 
                         @if (Session::has('message'))
                            <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -140,6 +127,7 @@
 
 			</div>
 			<!-- end widget -->
+
 
 @stop
 
