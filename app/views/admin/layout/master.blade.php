@@ -232,6 +232,7 @@
 
 		</script>
 
+
         @yield('custom-js')
 
 

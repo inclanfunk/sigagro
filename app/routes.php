@@ -24,8 +24,17 @@ Route::group(['before' => 'auth'] , function(){
 	Route::post('sadmin/user_create','UserCreatorController@sendForm'); // User Managment
 	Route::resource('users' , 'UserManagmentController');
 	Route::resource('farms' , 'FarmManagmentController');
+	//equipments
+	Route::resource('farms' , 'FarmManagmentController');
+	Route::resource('equipment' , 'EquipmentManagerController');
+
+
+	/*  Ajax Works  */
+	Route::get('api/apicreate','ApiController@userDrop'); // kullanıcı eklerken ajax işlemi dropdown
 
 });
+
+
 
 
 

@@ -47,13 +47,22 @@
 								<div class="row">
                                     <section class="col col-10">
                                         <label class="select">
-                                            <select name="roles">
+                                            <select name="roles" id="first_role">
                                                 <option value="0" selected="" disabled="">Please Select a User Role</option>
                                                 <option value="Admin">Distributor</option>
                                                 <option value="Client">Manager</option>
                                                 <option value="Viewer">Viewer</option>
                                                 <option value="Advisor">Advisor</option>
                                                 <option value="Editor">Editor</option>
+                                            </select> <i></i> </label>
+                                    </section>
+                                </div>
+
+                                <div class="row" id="admin" style="display:none; ">
+                                    <section class="col col-10">
+                                        <label class="select">
+                                            <select name="admin_id" id="admin_role">
+
                                             </select> <i></i> </label>
                                     </section>
                                 </div>
@@ -143,7 +152,7 @@
 
 @stop
 
-@section('custom-css')
+@section('custom-js')
 
 <!-- JQUERY VALIDATE -->
 <script src="{{URL::to('js/plugin/jquery-validate/jquery.validate.min.js')}} "></script>
@@ -178,9 +187,55 @@
 			});
 
 
+			  $('#first_role').change(function(){
+
+                        var ktype = $(this).val();
+
+                             if(ktype == "Client")   {
+
+                                 $('#admin').show();
+
+                                        $.ajax({
+                                            type: 'GET',
+                                            url:  '{{ URL::to('/api/apicreate') }}',
+                                            success:function(veri){
+                                                $.each(veri,function(i,deger){
+
+                                                    $('#admin_role').append('<option value="'+deger.id+'">' +deger.first_name+ '</option>' );
+
+                                                }); // each
+
+                                            },
+                                            error:function(x,hata){
+                                                alert("Hata Oluştu" +hata);
+                                            }
+
+                                        }); // ajax
+
+                             } else {  // else bölümü tekrar kullanıcı tipi secince altbayi selection ı saklar ve içindeki bilgiyi temizler
+                                 $('#admin').hide();
+                                   if($('#admin_role').val()){
+                                       $('#admin_role').empty();
+                                   }
+
+                             } // if s
+
+                    }); // change
+
+
+
+
+
+
+
 
 		})
 
-		</script>
+</script>
+
+
+
+
+
 
 @stop

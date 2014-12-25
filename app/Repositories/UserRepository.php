@@ -10,21 +10,37 @@ class UserRepository {
 	 * Create a New User
 	 *
 	 */
-	public function UserSave(array $credentials){
+	public function UserSave(array $credentials ){
+
 
 		try
 		{
 			// Create the user
-			$user = Sentry::createUser(array(
 
-				'email'          => $credentials['email'],
-				'first_name'     => $credentials['first_name'],
-				'last_name'      => $credentials['last_name'],
-				'phone'          => $credentials['phone'],
-				'password'       => $credentials['password'],
-				'activated'      => true,
+			if(isset($credentials['admin_id'])) {
+				$user = Sentry::createUser(array(
 
-			));
+					'email' => $credentials['email'],
+					'admin_id' => $credentials['admin_id'],
+					'first_name' => $credentials['first_name'],
+					'last_name' => $credentials['last_name'],
+					'phone' => $credentials['phone'],
+					'password' => $credentials['password'],
+					'activated' => true,
+				));
+			}else{
+				$user = Sentry::createUser(array(
+					'email' => $credentials['email'],
+					'first_name' => $credentials['first_name'],
+					'last_name' => $credentials['last_name'],
+					'phone' => $credentials['phone'],
+					'password' => $credentials['password'],
+					'activated' => true,
+				));
+
+			}
+
+
 			// Find the group using the group id
 			$adminGroup = Sentry::findGroupByName($credentials['roles']);
 

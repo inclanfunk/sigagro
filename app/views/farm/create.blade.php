@@ -48,7 +48,7 @@
 								<div class="row">
                                     <section class="col col-10">
                                         <label class="select">
-                                            <select name="manager_id">
+                                            <select name="manager_id" >
                                                 <option value="0" selected="" disabled="">Please Select A Manager</option>
 
                                                 @foreach($managers as $manager )
@@ -98,6 +98,15 @@
 
 			</div>
 			<!-- end widget -->
+
+@stop
+
+
+@section('custom-js')
+
+
+
+
 
 
 @stop

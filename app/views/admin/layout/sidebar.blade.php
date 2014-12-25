@@ -65,6 +65,38 @@
 					</li>
                     @endif
 
+                     @if(Sentry::getUser()->hasAnyAccess(['system']))
+                        <li>
+                            <a href="#"><i class="fa fa-lg fa-fw  fa-globe"></i> <span class="menu-item-parent">Equipment Control</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{ URL::to('equipment') }}">Create</a>
+                                </li>
+                            </ul>
+                        </li>
+                     @endif
+
+
+
+
+
+                    @if(Sentry::getUser()->hasAnyAccess(['system']))
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw  fa-globe"></i> <span class="menu-item-parent">Viewer Managment</span></a>
+						<ul>
+							<li>
+								<a href="{{ URL::to('farms/create') }}">Create Farm</a>
+							</li>
+							<li>
+								<a href="{{ URL::to('farms') }}">Farm List</a>
+							</li>
+
+						</ul>
+					</li>
+                    @endif
+
+
+
 
 	             <!--
 					<li>

@@ -116,7 +116,6 @@
 					</div>
 					<!-- end widget content -->
 
-
                         @if (Session::has('message'))
                            <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
@@ -131,7 +130,7 @@
 
 @stop
 
-@section('custom-css')
+@section('custom-js')
 
 <!-- JQUERY VALIDATE -->
 <script src="{{URL::to('js/plugin/jquery-validate/jquery.validate.min.js')}} "></script>
@@ -168,7 +167,50 @@
 
 
 		})
+</script>
 
-		</script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $('#ktype').change(function(){
+
+            ktype = $(this).val();
+
+                 if(ktype == "altbayi")   {
+
+                     $('#altbayi').show();
+
+                            $.ajax({
+                                type: 'GET',
+                                url:  '{{ URL::to('/api/apicreate') }}',
+                                success:function(veri){
+                                    $.each(veri,function(i,deger){
+
+                                        $('#altbayitype').append('<option value="'+deger.id+'">' +deger.name+ '</option>' );
+
+                                    }); // each
+
+                                },
+                                error:function(x,hata){
+                                    alert("Hata Oluştu" +hata);
+                                }
+
+                            }); // ajax
+
+                 } else {  // else bölümü tekrar kullanıcı tipi secince altbayi selection ı saklar ve içindeki bilgiyi temizler
+                     $('#altbayi').hide();
+                       if($('#altbayitype').val()){
+                           $('#altbayitype').empty();
+                       }
+
+                 } // if s
+
+        }); // change
+
+    })
+
+</script>
 
 @stop
