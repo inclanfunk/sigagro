@@ -2,15 +2,13 @@
 
 use Repositories\UserRepository;
 
-class UserManagmentController extends \BaseController {
-
+class ProfileManagmentController extends \BaseController {
 
 	public function __construct(UserRepository $userRepository){
 
 		$this->userRepository = $userRepository;
 
 	}
-
 
 	/**
 	 * Display a listing of the resource.
@@ -19,9 +17,8 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function index()
 	{
-		// Get All Users
-		$users = $this->userRepository->listAll();
-		return View::make('user.index' , compact('users'));
+		//
+		return View::make('profile.index');
 	}
 
 
@@ -56,9 +53,6 @@ class UserManagmentController extends \BaseController {
 	public function show($id)
 	{
 		//
-
-
-
 	}
 
 
@@ -70,9 +64,7 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//find user
-		$user =	$this->userRepository->findById($id);
-		return View::make('user.edit',compact('user'));
+		//
 	}
 
 
@@ -94,10 +86,8 @@ class UserManagmentController extends \BaseController {
 
 		$validator = Validator::make(Input::all(),$rules);
 		if($validator->fails()) return Redirect::back()->withErrors($validator);
-		// Update the User
 
 		$credentials = Input::all();
-
 		$update = $this->userRepository->updateUser($id,$credentials);
 
 		if($update){
@@ -118,15 +108,7 @@ class UserManagmentController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		// delete user
-		$delete = $this->userRepository->deleteUser($id);
-
-		if(!$delete){
-			return Redirect::back()->with('message','Delete is OK');
-		}else{
-			return Redirect::back()->with('message','Whoops, looks like something went wrong!');
-		}
-
+		//
 	}
 
 

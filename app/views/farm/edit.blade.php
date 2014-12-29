@@ -71,9 +71,13 @@
 							</fieldset>
 
 							<footer>
+
+
 								<button type="submit" class="btn btn-primary">
 									Update Farm
 								</button>
+
+			                    <p> Created At : {{ $farm->created_at }} </p>
 							</footer>
 						</form>
 

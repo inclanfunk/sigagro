@@ -24,9 +24,12 @@ Route::group(['before' => 'auth'] , function(){
 	Route::post('sadmin/user_create','UserCreatorController@sendForm'); // User Managment
 	Route::resource('users' , 'UserManagmentController');
 	Route::resource('farms' , 'FarmManagmentController');
+	Route::resource('profile' , 'ProfileManagmentController');
 	//equipments
 	Route::resource('farms' , 'FarmManagmentController');
 	Route::resource('equipment' , 'EquipmentManagerController');
+	//calendar
+	Route::resource('calendar' , 'CalendarController');
 
 
 	/*  Ajax Works  */

@@ -101,9 +101,10 @@ class UserRepository {
 		$user->last_name = $credentials['last_name'];
 		$user->phone = $credentials['phone'];
 
-		if($credentials['password']) {
+		if($credentials['password'] and $credentials['password'] == $credentials['password_confirm'] ) {
 			$user->password = $credentials['password'];
 		}
+
 		$user->save();
 
 		if($user->save()){

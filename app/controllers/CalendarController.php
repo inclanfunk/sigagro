@@ -1,6 +1,6 @@
 <?php
 
-class EquipmentManagerController extends \BaseController {
+class CalendarController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -10,6 +10,8 @@ class EquipmentManagerController extends \BaseController {
 	public function index()
 	{
 		//
+
+		return View::make('calendar.index');
 	}
 
 
@@ -21,9 +23,6 @@ class EquipmentManagerController extends \BaseController {
 	public function create()
 	{
 		//
-
-		return View::make('equipment.create');
-
 	}
 
 

@@ -15,7 +15,6 @@ class Farm extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
 
 
 	public function user()

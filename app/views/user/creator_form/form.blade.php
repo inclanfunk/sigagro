@@ -101,29 +101,14 @@
                                     </section>
                                     <section class="col col-6">
                                         <label class="input"> <i class="icon-append fa  fa-lock"></i>
-                                            <input type="password" name="email-confirm" placeholder="Confirm Password">
+                                            <input type="password" name="password_confirm" placeholder="Confirm Password">
                                         </label>
                                     </section>
                                </div>
 							</fieldset>
 
 
-							<fieldset>
 
-								<div class="row">
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-calendar"></i>
-											<input type="text" name="startdate" id="startdate" placeholder="Expected start date" class="datepicker"  >
-										</label>
-									</section>
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-calendar"></i>
-											<input type="text" name="finishdate" id="finishdate" placeholder="Expected finish date" class="datepicker" >
-										</label>
-									</section>
-								</div>
-
-							</fieldset>
 							<footer>
 								<button type="submit" class="btn btn-primary">
 									Create User

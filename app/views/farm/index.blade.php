@@ -71,7 +71,11 @@
                     @foreach($farms as $farm)
                     <tr>
                         <td>{{ $farm->farm_name }}</td>
-                        <td>{{ $farm->user->first_name }}</td>
+                        @if($farm->user)
+                        <td>{{ $farm->user->first_name}}</td>
+                        @else
+                        <td> </td>
+                        @endif
                         <td>{{ $farm->company_name  }}</td>
                         <td><?php  $address = str_limit($farm->farm_address, $limit = 20, $end = '...') ?> {{ $address }}</td>
                         <td> {{ $farm->created_at  }}</td>

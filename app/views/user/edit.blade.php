@@ -83,35 +83,36 @@
                                     </section>
                                     <section class="col col-6">
                                         <label class="input"> <i class="icon-append fa  fa-lock"></i>
-                                            <input type="password" name="password-confirm" placeholder="Confirm Password">
+                                            <input type="password" name="password_confirm" placeholder="Confirm Password">
                                         </label>
                                     </section>
                                </div>
 							</fieldset>
 
-
-							<fieldset>
+	                        <fieldset>
 
 								<div class="row">
 									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-calendar"></i>
-											<input type="text" name="startdate" id="startdate" placeholder="Expected start date" class="datepicker"  >
-										</label>
+										<p> Created At : {{ Sentry::getUser()->created_at }} | User Type : @foreach($user->groups as $group) {{ $group->name }} @endforeach </p>
 									</section>
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-calendar"></i>
-											<input type="text" name="finishdate" id="finishdate" placeholder="Expected finish date" class="datepicker" >
-										</label>
-									</section>
+
 								</div>
 
 							</fieldset>
+
 							<footer>
 								<button type="submit" class="btn btn-primary">
 									Update
 								</button>
+								        <span style="color: red;"> {{ $errors->first('email'); }} </span><br>
+                                        <span style="color: red;"> {{ $errors->first('first_name'); }} </span>
+                                        <span style="color: red;"> {{ $errors->first('last_name'); }} </span>
+                                        <span style="color: red;"> {{ $errors->first('password'); }} </span>
+                                        <span style="color: red;"> {{ $errors->first('password_confirm'); }} </span>
 							</footer>
 						</form>
+
+
 
 					</div>
 					<!-- end widget content -->
@@ -119,7 +120,6 @@
                         @if (Session::has('message'))
                            <div class="alert alert-info">{{ Session::get('message') }}</div>
                         @endif
-
 
 				</div>
 				<!-- end widget div -->

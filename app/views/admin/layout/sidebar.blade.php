@@ -7,7 +7,7 @@
 					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 						<img src="{{URL::to('img/avatars/sunny.png')}}" alt="me" class="online" />
 						<span>
-						  <?php $users =  Sentry::getUser(); ?>  {{ $users->first_name }}
+						  {{ Sentry::getUser()->first_name }}
 						</span>
 						<i class="fa fa-angle-down"></i>
 					</a>
@@ -30,7 +30,7 @@
 
 				<ul>
 					<li>
-						<a href="{{ URL::to('dashboards') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+						<a href="{{ URL::to('dashboard') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
 					</li>
 
 
@@ -70,7 +70,7 @@
                             <a href="#"><i class="fa fa-lg fa-fw  fa-globe"></i> <span class="menu-item-parent">Equipment Control</span></a>
                             <ul>
                                 <li>
-                                    <a href="{{ URL::to('equipment') }}">Create</a>
+                                    <a href="{{ URL::to('equipment/create') }}">Create</a>
                                 </li>
                             </ul>
                         </li>
@@ -234,7 +234,7 @@
                 -->
 
 					<li>
-						<a href="{{ URL::to('calendar.html') }}"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
+						<a href="{{ URL::to('calendar') }}"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
 					</li>
 
 					<li>
