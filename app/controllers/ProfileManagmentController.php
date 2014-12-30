@@ -18,6 +18,8 @@ class ProfileManagmentController extends \BaseController {
 	public function index()
 	{
 		//
+
+
 		return View::make('profile.index');
 	}
 
@@ -89,6 +91,31 @@ class ProfileManagmentController extends \BaseController {
 
 		$credentials = Input::all();
 		$update = $this->userRepository->updateUser($id,$credentials);
+
+		if(Input::hasFile('p_photo')){
+			$img = Input::file('p_photo');
+			$ext = $img->getClientOriginalExtension();
+			$filename = uniqid().'.'.$ext;
+			$path = public_path('uploads/'.$filename);
+
+			if(Image::make($img->getRealPath())->save($path))
+			{
+				$find = Pics::where('user_id','=',$id)->first();;
+				if($find){
+					$pics = Pics::where('user_id','=',$id)->firstOrFail();;
+					$pics->name = $filename;
+					$pics->save();
+
+				}else {
+						$pics = new Pics();
+						$pics->name = $filename;
+						$pics->user_id = $id;
+						$pics->save();
+				}
+			}
+
+		}
+
 
 		if($update){
 			return Redirect::back()->with('message','Update is OK');

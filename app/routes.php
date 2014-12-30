@@ -48,7 +48,6 @@ Route::get('/createuser' , function(){
 
 
 
-
 Route::get('/giveperm' , function(){
 
 
@@ -67,7 +66,6 @@ Route::get('/giveperm' , function(){
 	$sadmin = Sentry::findGroupByName('Admin');
 
 	if ($user->inGroup($sadmin)) {  echo 'bu Super Admin';  } else { echo 'GO GO GO'; }
-
 
 
 });

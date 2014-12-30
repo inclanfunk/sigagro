@@ -4,10 +4,10 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Cartalyst\Sentry\Users\Eloquent\User as SentryModel;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends SentryModel  {
 
-	use UserTrait, RemindableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -15,6 +15,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -27,6 +28,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function farm()
 	{
 		return $this->hasMany('Farm');
+	}
+
+
+	public function pics()
+	{
+		return $this->hasOne('Pics');
 	}
 
 

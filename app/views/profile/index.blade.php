@@ -1,145 +1,297 @@
 @extends('admin.layout.master')
 
+
 @section('content')
 
-<!-- Widget ID (each widget will need unique ID)-->
-			<div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
-				<!-- widget options:
-					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-					data-widget-colorbutton="false"
-					data-widget-editbutton="false"
-					data-widget-togglebutton="false"
-					data-widget-deletebutton="false"
-					data-widget-fullscreenbutton="false"
-					data-widget-custombutton="false"
-					data-widget-collapsed="true"
-					data-widget-sortable="false"
+<div class="row">
 
-				-->
-				<header>
-					<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-					<h2> Profile </h2>
+        <div class="col-sm-12">
 
-				</header>
+            <div class="well well-sm">
 
+                <div class="row">
 
+                    <div class="col-sm-6 col-md-6 col-lg-6">
 
-				<!-- widget div-->
-				<div>
+                        <div class="well well-light well-sm no-margin no-padding">
 
-					<!-- widget edit box -->
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
+                            <div class="row"> <!--  Main div -->
 
-					</div>
-					<!-- end widget edit box -->
+                                <div class="col-sm-12">
+                                    <div id="myCarousel" class="carousel fade profile-carousel">
+                                        <div class="air air-bottom-right padding-10">
+                                        </div>
+                                        <div class="air air-top-left padding-10">
+                                            <h4 class="txt-color-white font-md">{{ Sentry::getUser()->created_at }}</h4>
+                                        </div>
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <!-- Slide 1 -->
+                                            <div class="item active">
+                                                <img src="img/demo/s1.jpg" alt="demo user">
+                                            </div>
+                                            <!-- Slide 2 -->
+                                            <div class="item">
+                                                <img src="img/demo/s2.jpg" alt="demo user">
+                                            </div>
+                                            <!-- Slide 3 -->
+                                            <div class="item">
+                                                <img src="img/demo/m3.jpg" alt="demo user">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-					<!-- widget content -->
-					<div class="widget-body no-padding">
+                                <div class="col-sm-12">
 
-						<form id="order-form" class="smart-form" novalidate="novalidate" action=" {{ URL::to('profile/'.Sentry::getUser()->getId() ) }} " method="post" >
-							<header>
-								Profile Details
-							</header>
-                                   <!-- For Larevel PUT METHOD ! -->
-                                  <input type="hidden" name="_method" value="put" />
-							<fieldset>
+                                    <div class="row">
 
-								<div class="row">
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="text" name="first_name" placeholder="First Name" value="{{ Sentry::getUser()->first_name }}">
-										</label>
-									</section>
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-user"></i>
-											<input type="text" name="last_name" placeholder="Last Name" value="{{ Sentry::getUser()->last_name }}">
-										</label>
-									</section>
-								</div>
+                                        <div class="col-sm-3 profile-pic">
+                                            @if(Sentry::getUser()->pics)
+                                            <img src=" {{URL::to('/uploads/'.Sentry::getUser()->pics->name)}} " alt="demo user">
+                                            @else
+                                             <img src=" {{URL::to('/img/avatar.png') }} " alt="demo user">
+                                            @endif
+                                            <div class="padding-10">
+                                                <h4 class="font-md"><strong>   </strong>
+                                                <br>
+                                                <small> </small></h4>
+                                                <br>
+                                                <h4 class="font-md"><strong>   </strong>
+                                                <br>
+                                                <small>  </small></h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h1>{{ Sentry::getUser()->first_name }}<span class="semi-bold">  {{ Sentry::getUser()->last_name }}  </span>
+                                            <br>
+                                            <small> @foreach(Sentry::getUser()->groups as $group) {{ $group->name }} @endforeach </small></h1>
 
-								<div class="row">
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-											<input type="email" name="email" placeholder="E-mail" value="{{ Sentry::getUser()->email }}">
-										</label>
-									</section>
-									<section class="col col-6">
-										<label class="input"> <i class="icon-append fa fa-phone"></i>
-											<input type="tel" name="phone" placeholder="Phone" data-mask="(999) 999-9999" value="{{ Sentry::getUser()->phone }}">
-										</label>
-									</section>
-								</div>
-
-								<div class="row">
-                                    <section class="col col-6">
-                                        <label class="input"> <i class="icon-append fa  fa-lock"></i>
-                                            <input type="password" name="password" placeholder="Password">
-                                        </label>
-                                    </section>
-                                    <section class="col col-6">
-                                        <label class="input"> <i class="icon-append fa  fa-lock"></i>
-                                            <input type="password" name="password_confirm" placeholder="Confirm Password">
-                                        </label>
-                                    </section>
-                               </div>
-							</fieldset>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <p class="text-muted">
+                                                        <i class="fa fa-phone"></i>&nbsp;&nbsp; <span class="txt-color-darken"></span> <span class="txt-color-darken">{{ Sentry::getUser()->phone }}</span>  <span class="txt-color-darken"></span>
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-muted">
+                                                        <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{ Sentry::getUser()->email }}">  {{ Sentry::getUser()->email }}   </a>
+                                                    </p>
+                                                </li>
 
 
-							<fieldset>
+                                            </ul>
+                                            <br>
+                                            <p class="font-md">
+                                                <i>A little about me...</i>
+                                            </p>
+                                            <p>
 
-								<div class="row">
-									<section class="col col-6">
-										<p> Created At : {{ Sentry::getUser()->created_at }} | User Type : @foreach(Sentry::getUser()->groups as $group) {{ $group->name }} @endforeach </p>
-									</section>
+                                                Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+                                                cumque nihil impedit quo minus id quod maxime placeat facere
 
-								</div>
+                                            </p>
 
-							</fieldset>
-							<footer>
-								<button type="submit" class="btn btn-primary">
-									Update Profile
-								</button>
-								    <span style="color: red;"> {{ $errors->first('email'); }} </span><br>
-                                    <span style="color: red;"> {{ $errors->first('first_name'); }} </span>
-                                    <span style="color: red;"> {{ $errors->first('last_name'); }} </span>
-                                    <span style="color: red;"> {{ $errors->first('password'); }} </span>
-                                    <span style="color: red;"> {{ $errors->first('password_confirm'); }} </span>
-							</footer>
-						</form>
+                                            <br>
 
-					</div>
-					<!-- end widget content -->
+                                             <button class="btn btn-warning" id="clickme">
+                                                  Edit Your Profile Now
+                                             </button>
+                                             <br> <br>
+
+                                        </div>
 
 
-                        @if(Session::has('error_msg'))
-                                        <p class="alert alert-danger">{{Session::get('error_msg')}}</p>
-                        @endif
 
-                        @if (Session::has('message'))
-                           <div class="alert alert-info">{{ Session::get('message') }}</div>
-                        @endif
+                                    </div>
 
 
-				</div>
-				<!-- end widget div -->
+                                </div>
 
-			</div>
-			<!-- end widget -->
+
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+                                 <!-- Left side  -->
+
+                                 <div style="display: none;" class="col-sm-6 col-md-6 col-lg-6" id="toggleprofile">
+
+                                       			<div class="jarviswidget" id="wid-id-3" data-widget-editbutton="false" data-widget-custombutton="false">
+                                       				<!-- widget options:
+                                       					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                                       					data-widget-colorbutton="false"
+                                       					data-widget-editbutton="false"
+                                       					data-widget-togglebutton="false"
+                                       					data-widget-deletebutton="false"
+                                       					data-widget-fullscreenbutton="false"
+                                       					data-widget-custombutton="false"
+                                       					data-widget-collapsed="true"
+                                       					data-widget-sortable="false"
+
+                                       				-->
+                                       				<header>
+                                       					<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                       					<h2> Edit your profile </h2>
+
+                                       				</header>
+
+
+
+                                       				<!-- widget div-->
+                                       				<div>
+
+                                       					<!-- widget edit box -->
+                                       					<div class="jarviswidget-editbox">
+                                       						<!-- This area used as dropdown edit box -->
+
+                                       					</div>
+                                       					<!-- end widget edit box -->
+
+                                       					<!-- widget content -->
+                                       					<div class="widget-body no-padding">
+
+                                       						<form id="order-form" class="smart-form" novalidate="novalidate" action=" {{ URL::to('profile/'.Sentry::getUser()->getId() ) }} " method="post" enctype="multipart/form-data" >
+                                       							<header>
+                                       								Profile Details
+                                       							</header>
+                                                                          <!-- For Larevel PUT METHOD ! -->
+                                                                         <input type="hidden" name="_method" value="put" />
+                                       							<fieldset>
+
+                                       								<div class="row">
+                                       									<section class="col col-6">
+                                       										<label class="input"> <i class="icon-append fa fa-user"></i>
+                                       											<input type="text" name="first_name" placeholder="First Name" value="{{ Sentry::getUser()->first_name }}">
+                                       										</label>
+                                       									</section>
+                                       									<section class="col col-6">
+                                       										<label class="input"> <i class="icon-append fa fa-user"></i>
+                                       											<input type="text" name="last_name" placeholder="Last Name" value="{{ Sentry::getUser()->last_name }}">
+                                       										</label>
+                                       									</section>
+                                       								</div>
+
+                                       								<div class="row">
+                                       									<section class="col col-6">
+                                       										<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+                                       											<input type="email" name="email" placeholder="E-mail" value="{{ Sentry::getUser()->email }}">
+                                       										</label>
+                                       									</section>
+                                       									<section class="col col-6">
+                                       										<label class="input"> <i class="icon-append fa fa-phone"></i>
+                                       											<input type="tel" name="phone" placeholder="Phone" data-mask="(999) 999-9999" value="{{ Sentry::getUser()->phone }}">
+                                       										</label>
+                                       									</section>
+                                       								</div>
+
+                                       								<div class="row">
+                                                                           <section class="col col-6">
+                                                                               <label class="input"> <i class="icon-append fa  fa-lock"></i>
+                                                                                   <input type="password" name="password" placeholder="Password">
+                                                                               </label>
+                                                                           </section>
+                                                                           <section class="col col-6">
+                                                                               <label class="input"> <i class="icon-append fa  fa-lock"></i>
+                                                                                   <input type="password" name="password_confirm" placeholder="Confirm Password">
+                                                                               </label>
+                                                                           </section>
+                                                                      </div>
+                                       							</fieldset>
+
+
+                                       							<fieldset>
+
+                                       							<div class="col-md-10">
+                                                                    <input type="file" class="btn btn-default" id="profile_pic" name="p_photo">
+                                                                    <p class="help-block">
+                                                                       Upload your profile photo
+                                                                    </p>
+                                                                </div>
+
+
+                                       							</fieldset>
+                                       							<footer>
+                                       								<button type="submit" class="btn btn-primary">
+                                       									Update Profile
+                                       								</button>
+                                       								    <span style="color: red;"> {{ $errors->first('email'); }} </span><br>
+                                                                           <span style="color: red;"> {{ $errors->first('first_name'); }} </span>
+                                                                           <span style="color: red;"> {{ $errors->first('last_name'); }} </span>
+                                                                           <span style="color: red;"> {{ $errors->first('password'); }} </span>
+                                                                           <span style="color: red;"> {{ $errors->first('password_confirm'); }} </span>
+                                       							</footer>
+                                       						</form>
+
+                                       					</div>
+                                       					<!-- end widget content -->
+
+
+                                                               @if(Session::has('error_msg'))
+                                                                               <p class="alert alert-danger">{{Session::get('error_msg')}}</p>
+                                                               @endif
+
+                                                               @if (Session::has('message'))
+                                                                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                                                               @endif
+
+
+                                       				</div>
+                                       				<!-- end widget div -->
+
+                                       			</div>
+                                       			<!-- end widget -->
+
+                                 </div>
+
+
+                   </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end row -->
+
+
+
+
 
 
 @stop
 
 
 
-
-
 @section('custom-js')
+<script type="text/javascript">
 
-<script src="{{URL::to('js/plugin/jquery-validate/jquery.validate.min.js')}} "></script>
 
 
+$( "#clickme" ).click(function() {
+  $( "#toggleprofile" ).toggle( "slow", function() {
+    // Animation complete.
+  });
+});
+
+
+
+</script>
 
 
 @stop
