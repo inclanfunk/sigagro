@@ -10,8 +10,8 @@ class CalendarController extends \BaseController {
 	public function index()
 	{
 		//
-
-		return View::make('calendar.index');
+		$events = Calendar::all();
+		return View::make('calendar.index' , compact('events'));
 	}
 
 
@@ -22,7 +22,8 @@ class CalendarController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+
+
 	}
 
 
@@ -33,7 +34,31 @@ class CalendarController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// validation
+		$rules = [
+			'title' => 'required',
+			'mystartdate' => 'required',
+			'myenddate' => 'required',
+		];
+
+		$validator = Validator::make(Input::all(),$rules);
+		if($validator->fails()) return Redirect::back()->withErrors($validator);
+
+
+		$calendar = new Calendar();
+		$calendar->title = Input::get('title');
+		$calendar->description = Input::get('description');
+		$calendar->start = Input::get('mystartdate');
+		$calendar->end = Input::get('myenddate');
+		$calendar->className = Input::get('color');
+
+		$calendar->save();
+
+		if($calendar){
+			return Redirect::back()->with('message','Event is created.');
+		}else{
+			return Redirect::back()->with('message','Whoops, looks like something went wrong!');
+		}
 	}
 
 
@@ -57,7 +82,8 @@ class CalendarController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$event = Calendar::findOrFail($id);
+		return View::make('calendar.edit',compact('event'));
 	}
 
 
@@ -69,7 +95,30 @@ class CalendarController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// validation
+		$rules = [
+			'title' => 'required',
+			'mystartdate' => 'required',
+			'myenddate' => 'required',
+		];
+
+		$validator = Validator::make(Input::all(),$rules);
+		if($validator->fails()) return Redirect::back()->withErrors($validator);
+
+
+		$calendar = Calendar::findOrFail($id);
+		$calendar->title = Input::get('title');
+		$calendar->description = Input::get('description');
+		$calendar->start = Input::get('mystartdate');
+		$calendar->end = Input::get('myenddate');
+		$calendar->className = Input::get('color');
+		$calendar->save();
+
+		if($calendar){
+			return Redirect::back()->with('message','Event is updated.');
+		}else{
+			return Redirect::back()->with('message','Whoops, looks like something went wrong!');
+		}
 	}
 
 
@@ -81,7 +130,15 @@ class CalendarController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$delete = Calendar::findOrFail($id);
+		$delete->delete();
+
+		if($delete){
+			return Redirect::back()->with('message2','Delete is OK');
+		}else{
+			return Redirect::back()->with('message2','Whoops, looks like something went wrong!');
+		}
+
 	}
 
 

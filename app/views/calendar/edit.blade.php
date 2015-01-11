@@ -18,17 +18,19 @@
 								<div class="widget-body">
 									<!-- content goes here -->
 
-									<form id="add-event-form" action="{{ URL::to('calendar') }}"  method="post">
+									<form id="add-event-form" action="{{ URL::to('calendar/'.$event->id) }}"  method="post">
 										<fieldset>
+
+										   <input type="hidden" name="_method" value="put" />
 
 											<div class="form-group">
 												<label>Event Title</label>
-												<input class="form-control"  id="title" name="title" maxlength="40" type="text" placeholder="Event Title">
+												<input class="form-control"  id="title" name="title" value="{{ $event->title }}"  maxlength="40" type="text" placeholder="Event Title">
 											</div>
 
 											<div class="form-group">
                                                 <label>Event Description</label>
-                                                <textarea class="form-control" placeholder="Please be brief" name="description" rows="3" maxlength="40" id="description"></textarea>
+                                                <textarea class="form-control" placeholder="Please be brief" name="description" rows="3" maxlength="40" id="description"> {{ $event->description }}   </textarea>
                                                 <p class="note">Maxlength is set to 40 characters</p>
                                             </div>
 
@@ -36,7 +38,7 @@
                                             <div class="form-group">
                                                 <label>Start date </label>
                                                 <div class="input-group">
-                                                    <input type="text" name="mystartdate" placeholder="Select a start date" class="form-control datepicker" data-dateformat="yy-mm-dd">
+                                                    <input type="text" name="mystartdate" placeholder="Select a start date" value="{{ $event->start }}"  class="form-control datepicker" data-dateformat="yy-mm-dd">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
@@ -45,34 +47,36 @@
                                             <div class="form-group">
                                                 <label>End date</label>
                                                 <div class="input-group">
-                                                    <input type="text" name="myenddate" placeholder="Select an end date" class="form-control datepicker" data-dateformat="yy-mm-dd">
+                                                    <input type="text" name="myenddate" placeholder="Select an end date" value="{{ $event->end }}" class="form-control datepicker" data-dateformat="yy-mm-dd">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                          <div class="form-group">
                                                 <label>Select Event Color</label>
                                                 <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                                    <label class="btn bg-color-darken active">
-                                                        <input type="radio" name="color" id="option1" value="bg-color-darken txt-color-white">
+                                                    <label  @if($event->className == 'bg-color-darken txt-color-white' ) class="btn bg-color-darken active" @else class="btn bg-color-darken" @endif  >
+                                                        <input type="radio" name="color" id="option1" value="bg-color-darken txt-color-white" @if( $event->className == 'bg-color-darken txt-color-white' ) checked  @endif  >
                                                         <i class="fa fa-check txt-color-white"></i> </label>
-                                                    <label class="btn bg-color-blue">
-                                                        <input type="radio" name="color" id="option2" value="bg-color-blue txt-color-white">
+                                                    <label @if($event->className == 'bg-color-blue txt-color-white' )  class="btn bg-color-blue active" @else  class="btn bg-color-blue"  @endif  >
+                                                        <input type="radio" name="color" id="option2" value="bg-color-blue txt-color-white"  @if( $event->className == 'bg-color-blue txt-color-white' ) checked  @endif  checked  >
                                                         <i class="fa fa-check txt-color-white"></i> </label>
-                                                    <label class="btn bg-color-orange">
-                                                        <input type="radio" name="color" id="option3" value="bg-color-orange txt-color-white">
+                                                    <label  @if($event->className == 'bg-color-orange txt-color-white') class="btn bg-color-orange active" @else class="btn bg-color-orange"  @endif  >
+                                                        <input type="radio" name="color" id="option3" value="bg-color-orange txt-color-white" @if( $event->className == 'bg-color-orange txt-color-white' ) checked  @endif >
                                                         <i class="fa fa-check txt-color-white"></i> </label>
-                                                    <label class="btn bg-color-greenLight">
-                                                        <input type="radio" name="color" id="option4" value="bg-color-greenLight txt-color-white">
+                                                    <label  @if($event->className == 'bg-color-greenLight txt-color-white' ) class="btn bg-color-greenLight active" @else class="btn bg-color-greenLight" @endif  >
+                                                        <input type="radio" name="color" id="option4" value="bg-color-greenLight txt-color-white" @if( $event->className == 'bg-color-greenLight txt-color-white' ) checked  @endif >
                                                         <i class="fa fa-check txt-color-white"></i> </label>
-                                                    <label class="btn bg-color-blueLight">
-                                                        <input type="radio" name="color" id="option5" value="bg-color-blueLight txt-color-white">
+                                                    <label  @if($event->className == 'bg-color-blueLight txt-color-white' ) class="btn bg-color-blueLight active" @else class="btn bg-color-blueLight" @endif>
+                                                        <input type="radio" name="color" id="option5" value="bg-color-blueLight txt-color-white" @if( $event->className == 'bg-color-blueLight txt-color-white' ) checked  @endif >
                                                         <i class="fa fa-check txt-color-white"></i> </label>
-                                                    <label class="btn bg-color-red">
-                                                        <input type="radio" name="color" id="option6" value="bg-color-red txt-color-white">
+                                                    <label @if($event->className == 'bg-color-red txt-color-white' )  class="btn bg-color-red active"  @else  class="btn bg-color-red"  @endif>
+                                                        <input type="radio" name="color" id="option6" value="bg-color-red txt-color-white" @if( $event->className == 'bg-color-red txt-color-white' ) checked @endif >
                                                         <i class="fa fa-check txt-color-white"></i> </label>
                                                 </div>
                                             </div>
+
+
 
 
 										</fieldset>
@@ -80,7 +84,7 @@
 											<div class="row">
 												<div class="col-md-12">
 													<button class="btn btn-default" type="submit" id="add-event" >
-														Add Event
+														Update Event
 													</button>
 												</div>
 											</div>
@@ -106,158 +110,6 @@
 
 					</div>
 
-
-					<div class="col-sm-12 col-md-12 col-lg-9">
-
-						<!-- new widget -->
-						<div class="jarviswidget jarviswidget-color-blueDark">
-
-							<!-- widget options:
-							usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-							data-widget-colorbutton="false"
-							data-widget-editbutton="false"
-							data-widget-togglebutton="false"
-							data-widget-deletebutton="false"
-							data-widget-fullscreenbutton="false"
-							data-widget-custombutton="false"
-							data-widget-collapsed="true"
-							data-widget-sortable="false"
-
-							-->
-							<header>
-								<span class="widget-icon"> <i class="fa fa-calendar"></i> </span>
-								<h2> My Events </h2>
-								<div class="widget-toolbar">
-									<!-- add: non-hidden - to disable auto hide -->
-									<div class="btn-group">
-										<button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
-											Showing <i class="fa fa-caret-down"></i>
-										</button>
-										<ul class="dropdown-menu js-status-update pull-right">
-											<li>
-												<a href="javascript:void(0);" id="mt">Month</a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" id="ag">Agenda</a>
-											</li>
-											<li>
-												<a href="javascript:void(0);" id="td">Today</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</header>
-
-							<!-- widget div-->
-							<div>
-
-								<div class="widget-body no-padding">
-									<!-- content goes here -->
-									<div class="widget-body-toolbar">
-
-										<div id="calendar-buttons">
-
-											<div class="btn-group">
-												<a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-												<a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
-											</div>
-										</div>
-									</div>
-									<div id="calendar"></div>
-
-									<!-- end content -->
-								</div>
-
-							</div>
-							<!-- end widget div -->
-						</div>
-						<!-- end widget -->
-
-					</div>
-
-				</div>
-				<!-- end row -->
-
-
-
-<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
-    <!-- widget options:
-    usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-    data-widget-colorbutton="false"
-    data-widget-editbutton="false"
-    data-widget-togglebutton="false"
-    data-widget-deletebutton="false"
-    data-widget-fullscreenbutton="false"
-    data-widget-custombutton="false"
-    data-widget-collapsed="true"
-    data-widget-sortable="false"
-    -->
-    <header>
-        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-        <h2> User List  </h2>
-
-    </header>
-
-    <!-- widget div-->
-    <div>
-
-        <!-- widget edit box -->
-        <div class="jarviswidget-editbox">
-            <!-- This area used as dropdown edit box -->
-
-        </div>
-        <!-- end widget edit box -->
-
-        <!-- widget content -->
-        <div class="widget-body no-padding">
-
-            <table id="datatable_fixed_column" class="table table-striped table-bordered" width="100%">
-
-                <thead>
-
-                    <tr>
-                        <th data-class="expand">Title</th>
-                        <th data-class="expand">Description</th>
-                        <th>  Start Date </th>
-                        <th data-class="expand">End Date</th>
-                        <th data-class="expand" style="width: 10%" >Actions  </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach($events as $event)
-                    <tr>
-                        <td> {{ $event->title }} </td>
-                        <td> {{ $event->description }}</td>
-                        <td> {{ $event->start }}</td>
-                        <td> {{ $event->end }}  </td>
-
-                        <td>
-                           <a href="{{URL::to('calendar/'.$event->id.'/edit')}}" class="btn btn-sm btn-success" style="font-size: 8px;"> Edit </a>
-
-                            {{ Form::open(array('route' => array('calendar.destroy', $event->id ), 'method' => 'delete' , 'style' => ' float:right;')) }}
-                                    <button onclick="return confirm('Are you sure you want to delete this event ?')" style="font-size: 8px;"  type="submit" class="btn btn-danger btn-mini">Delete</button>
-                            {{ Form::close() }}
-
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-
-            </table>
-
-        </div>
-        <!-- end widget content -->
-
-               @if (Session::has('message2'))
-                <div class="alert alert-info">{{ Session::get('message2') }}</div>
-               @endif
-
-    </div>
-    <!-- end widget div -->
-
-</div>
 
 
 

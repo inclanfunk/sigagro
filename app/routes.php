@@ -30,15 +30,10 @@ Route::group(['before' => 'auth'] , function(){
 	Route::resource('equipment' , 'EquipmentManagerController');
 	//calendar
 	Route::resource('calendar' , 'CalendarController');
-
-
 	/*  Ajax Works  */
 	Route::get('api/apicreate','ApiController@userDrop'); // kullanıcı eklerken ajax işlemi dropdown
-
+	Route::get('api/allevents','ApiController@all'); // kullanıcı eklerken ajax işlemi dropdown
 });
-
-
-
 
 
 
