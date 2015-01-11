@@ -195,7 +195,7 @@
     -->
     <header>
         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-        <h2> User List  </h2>
+        <h2> Events List  </h2>
 
     </header>
 
