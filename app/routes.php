@@ -30,10 +30,35 @@ Route::group(['before' => 'auth'] , function(){
 	Route::resource('equipment' , 'EquipmentManagerController');
 	//calendar
 	Route::resource('calendar' , 'CalendarController');
+	//stock market
+	Route::controller('stock' , 'StockController');
+
+
+	Route::get('stockm', function() {
+
+		$xml_url = "http://www.matba.com.ar/xml/ajustes.xml";
+		$xml = simplexml_load_file($xml_url);
+
+		foreach ($xml->Ajustes as $item)
+		{
+			echo $item->PRODUCTO.'<br>';
+			// başlık: $item->title;
+		}
+
+	});
+
+
 	/*  Ajax Works  */
 	Route::get('api/apicreate','ApiController@userDrop'); // kullanıcı eklerken ajax işlemi dropdown
 	Route::get('api/allevents','ApiController@all'); // kullanıcı eklerken ajax işlemi dropdown
+
+	/*  Cron JOB key: x9HbwttAZwbeS4cIbiVJzHuEHnp4W7CJ  */
+
+
 });
+
+
+
 
 
 

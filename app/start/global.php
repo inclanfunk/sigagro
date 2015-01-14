@@ -79,3 +79,14 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+
+Event::listen('cron.collectJobs', function() {
+	Cron::add('updates', '* * * * *', function() {
+
+		return Redirect::to('/logout');
+
+	});
+
+});

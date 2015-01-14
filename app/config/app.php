@@ -125,7 +125,6 @@ return array(
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 
-
 	),
 
 	/*

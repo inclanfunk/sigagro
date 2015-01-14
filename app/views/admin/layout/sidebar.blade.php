@@ -58,7 +58,7 @@
 
                     @if(Sentry::getUser()->hasAnyAccess(['system']))
 					<li>
-						<a href="#"><i class="fa fa-lg fa-fw  fa-globe"></i> <span class="menu-item-parent">Farm Managment</span></a>
+						<a href="#"><i class="fa fa-lg fa-fw fa-globe"></i> <span class="menu-item-parent">Farm Managment</span></a>
 						<ul>
 							<li>
 								<a href="{{ URL::to('farms/create') }}">Create Farm</a>
@@ -73,7 +73,7 @@
 
                      @if(Sentry::getUser()->hasAnyAccess(['system']))
                         <li>
-                            <a href="#"><i class="fa fa-lg fa-fw  fa-globe"></i> <span class="menu-item-parent">Equipment Control</span></a>
+                            <a href="#"><i class="fa fa-lg fa-fw   fa-cubes"></i> <span class="menu-item-parent">Equipment Control</span></a>
                             <ul>
                                 <li>
                                     <a href="{{ URL::to('equipment/create') }}">Create</a>
@@ -106,148 +106,156 @@
 
 
 
-	             <!--
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
-						<ul>
-							<li>
-								<a href="table.html">Normal Tables</a>
-							</li>
-							<li>
-								<a href="datatables.html">Data Tables <span class="badge inbox-badge bg-color-greenLight">v1.10</span></a>
-							</li>
-							<li>
-								<a href="jqgrid.html">Jquery Grid</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Forms</span></a>
-						<ul>
-							<li>
-								<a href="form-elements.html">Smart Form Elements</a>
-							</li>
-							<li>
-								<a href="form-templates.html">Smart Form Layouts</a>
-							</li>
-							<li>
-								<a href="validation.html">Smart Form Validation</a>
-							</li>
-							<li>
-								<a href="bootstrap-forms.html">Bootstrap Form Elements</a>
-							</li>
-							<li>
-								<a href="plugins.html">Form Plugins</a>
-							</li>
-							<li>
-								<a href="wizard.html">Wizards</a>
-							</li>
-							<li>
-								<a href="other-editors.html">Bootstrap Editors</a>
-							</li>
-							<li>
-								<a href="dropzone.html">Dropzone </a>
-							</li>
-							<li>
-								<a href="image-editor.html">Image Cropping <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">UI Elements</span></a>
-						<ul>
-							<li>
-								<a href="general-elements.html">General Elements</a>
-							</li>
-							<li>
-								<a href="buttons.html">Buttons</a>
-							</li>
-							<li>
-								<a href="#">Icons</a>
-								<ul>
-									<li>
-										<a href="fa.html"><i class="fa fa-plane"></i> Font Awesome</a>
-									</li>
-									<li>
-										<a href="glyph.html"><i class="glyphicon glyphicon-plane"></i> Glyph Icons</a>
-									</li>
-									<li>
-										<a href="flags.html"><i class="fa fa-flag"></i> Flags</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="grid.html">Grid</a>
-							</li>
-							<li>
-								<a href="treeview.html">Tree View</a>
-							</li>
-							<li>
-								<a href="nestable-list.html">Nestable Lists</a>
-							</li>
-							<li>
-								<a href="jqui.html">JQuery UI</a>
-							</li>
-							<li>
-								<a href="typography.html">Typography</a>
-							</li>
-							<li>
-								<a href="#">Six Level Menu</a>
-								<ul>
-									<li>
-										<a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #2</a>
-										<ul>
-											<li>
-												<a href="#"><i class="fa fa-fw fa-folder-open"></i> Sub #2.1 </a>
-												<ul>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-file-text"></i> Item #2.1.1</a>
-													</li>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-plus"></i> Expand</a>
-														<ul>
-															<li>
-																<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-															</li>
-															<li>
-																<a href="#"><i class="fa fa-fw fa-trash-o"></i> Delete</a></li>
-														</ul>
-													</li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #3</a>
 
-										<ul>
-											<li>
-												<a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
-												<ul>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-													</li>
-													<li>
-														<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-													</li>
-												</ul>
-											</li>
-										</ul>
 
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-                -->
 
-					<li>
-						<a href="{{ URL::to('calendar') }}"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
-					</li>
+                     <!--
+                        <li>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
+                            <ul>
+                                <li>
+                                    <a href="table.html">Normal Tables</a>
+                                </li>
+                                <li>
+                                    <a href="datatables.html">Data Tables <span class="badge inbox-badge bg-color-greenLight">v1.10</span></a>
+                                </li>
+                                <li>
+                                    <a href="jqgrid.html">Jquery Grid</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Forms</span></a>
+                            <ul>
+                                <li>
+                                    <a href="form-elements.html">Smart Form Elements</a>
+                                </li>
+                                <li>
+                                    <a href="form-templates.html">Smart Form Layouts</a>
+                                </li>
+                                <li>
+                                    <a href="validation.html">Smart Form Validation</a>
+                                </li>
+                                <li>
+                                    <a href="bootstrap-forms.html">Bootstrap Form Elements</a>
+                                </li>
+                                <li>
+                                    <a href="plugins.html">Form Plugins</a>
+                                </li>
+                                <li>
+                                    <a href="wizard.html">Wizards</a>
+                                </li>
+                                <li>
+                                    <a href="other-editors.html">Bootstrap Editors</a>
+                                </li>
+                                <li>
+                                    <a href="dropzone.html">Dropzone </a>
+                                </li>
+                                <li>
+                                    <a href="image-editor.html">Image Cropping <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">UI Elements</span></a>
+                            <ul>
+                                <li>
+                                    <a href="general-elements.html">General Elements</a>
+                                </li>
+                                <li>
+                                    <a href="buttons.html">Buttons</a>
+                                </li>
+                                <li>
+                                    <a href="#">Icons</a>
+                                    <ul>
+                                        <li>
+                                            <a href="fa.html"><i class="fa fa-plane"></i> Font Awesome</a>
+                                        </li>
+                                        <li>
+                                            <a href="glyph.html"><i class="glyphicon glyphicon-plane"></i> Glyph Icons</a>
+                                        </li>
+                                        <li>
+                                            <a href="flags.html"><i class="fa fa-flag"></i> Flags</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="grid.html">Grid</a>
+                                </li>
+                                <li>
+                                    <a href="treeview.html">Tree View</a>
+                                </li>
+                                <li>
+                                    <a href="nestable-list.html">Nestable Lists</a>
+                                </li>
+                                <li>
+                                    <a href="jqui.html">JQuery UI</a>
+                                </li>
+                                <li>
+                                    <a href="typography.html">Typography</a>
+                                </li>
+                                <li>
+                                    <a href="#">Six Level Menu</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #2</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-fw fa-folder-open"></i> Sub #2.1 </a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-fw fa-file-text"></i> Item #2.1.1</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-fw fa-plus"></i> Expand</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#"><i class="fa fa-fw fa-trash-o"></i> Delete</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #3</a>
 
-					<li>
-						<a href="{{ URL::to('calendar.html') }}"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Forum</span></a>
-					</li>
+                                            <ul>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    -->
+
+                        <li>
+                            <a href="{{ URL::to('calendar') }}"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
+                        </li>
+
+                       <li>
+                            <a href="{{ URL::to('stock') }}"><i class="fa fa-lg fa-fw fa-shopping-cart"> </i> <span class="menu-item-parent">Stock Market</span></a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ URL::to('calendar.html') }}"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Forum</span></a>
+                        </li>
 
 
 
