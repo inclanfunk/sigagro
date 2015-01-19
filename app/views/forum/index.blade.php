@@ -74,7 +74,7 @@
       											<small><i>{{ $cat->created_at }}</i></small>
       										</td>
       										<td>
-      										     <a onclick="return confirm('Are you sure you want to delete this category ?')" href="#" class="btn btn-danger"> <i class=" fa fa-trash-o"></i> </a>
+      										     <a onclick="return confirm('Are you sure you want to delete this category ?')" href="{{ URL::to('forum/deletecategory/'.$cat->id) }}" class="btn btn-danger"> <i class=" fa fa-trash-o"></i> </a>
       										</td>
       									</tr>
                                         @endforeach

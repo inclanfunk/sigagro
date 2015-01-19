@@ -36,7 +36,31 @@ class ForumController extends \BaseController {
 		}
 	}
 
-	public function postDeletecategory(){
+	public function getDeletecategory($id){
+
+		$cat = ForumCat::find($id);
+		$thread = ForumThread::where('cat_id' , $id);
+		$comment = ForumComment::where('cat_id' , $id);
+
+
+		if( $cat->count() > 0 ){
+
+			$catDel = $cat->delete();
+		}
+
+		if( $thread->count() > 0 ){
+
+			$threadDel = $thread->delete();
+		}
+
+		if( $comment->count() > 0 ){
+
+			$commentDel = $comment->delete();
+		}
+
+		if ($catDel and $threadDel and  $commentDel ) {	return Redirect::back();}
+
+
 
 	}
 
