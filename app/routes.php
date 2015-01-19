@@ -32,6 +32,13 @@ Route::group(['before' => 'auth'] , function(){
 	Route::resource('calendar' , 'CalendarController');
 	//stock market
 	Route::controller('stock' , 'StockController');
+	//forum managment
+	Route::controller('forum' , 'ForumController');
+	Route::get('category/{id}' , 'ForumController@category');
+	Route::get('thread/create/{id}' , 'ForumController@createthread');
+	Route::post('createnewthread' , 'ForumController@createnewthread');
+	Route::post('createnewcomment' , 'ForumController@createnewcomment');
+	Route::get('thread/{id}' , 'ForumController@thread');
 
 
 	Route::get('stockm', function() {

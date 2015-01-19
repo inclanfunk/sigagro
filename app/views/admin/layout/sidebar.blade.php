@@ -254,7 +254,7 @@
 
 
                         <li>
-                            <a href="{{ URL::to('calendar.html') }}"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Forum</span></a>
+                            <a href="{{ URL::to('forum') }}"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Forum</span></a>
                         </li>
 
 

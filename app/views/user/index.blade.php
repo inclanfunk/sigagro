@@ -1,6 +1,30 @@
 @extends('admin.layout.master')
 
 @section('content')
+<div class="row">
+
+      					<!-- col -->
+      					<div class="col-xs-12 col-sm-3 col-md-4 col-lg-4">
+
+      					</div>
+      					<!-- end col -->
+
+                        <!-- col -->
+                        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+                            <!-- sparks -->
+                            <ul id="sparks">
+
+                                <li class="sparks-info">
+                                    <a href="{{ URL::to('farms/create') }}" class="btn btn-success" > Create A New User</a>
+                                </li>
+
+                            </ul>
+                            <!-- end sparks -->
+                        </div>
+                         <!-- end col -->
+
+
+      				</div>
 
 <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
     <!-- widget options:
