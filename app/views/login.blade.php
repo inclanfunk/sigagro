@@ -2,7 +2,7 @@
 <html lang="en-us" id="extr-page">
 <head>
 	<meta charset="utf-8">
-	<title> Web Panel</title>
+	<title> Sig Agro | Login</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -20,16 +20,14 @@
 		 This RTL CSS will be released in version 1.5
 	<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css"> -->
 
-	<!-- We recommend you use "your_style.css" to override SmartAdmin
-		 specific styles this will also ensure you retrain your customization with each SmartAdmin update.
-	<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+	<link rel="stylesheet" type="text/css" media="screen" href="css/sigagro_style.css">
 
 	<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
 	<link rel="stylesheet" type="text/css" media="screen" href=" {{URL::to('css/demo.min.css')}}   ">
 
 	<!-- #FAVICONS -->
-	<link rel="shortcut icon" href=" {{URL::to('img/favicon/favicon.ico')}}    " type="image/x-icon">
-	<link rel="icon" href=" {{URL::to('img/favicon/favicon.ico')}} " type="image/x-icon">
+	<link rel="shortcut icon" href=" {{URL::to('img/favicon/favicon1.ico')}}    " type="image/x-icon">
+	<link rel="icon" href=" {{URL::to('img/favicon/favicon1.ico')}} " type="image/x-icon">
 
 	<!-- #GOOGLE FONT -->
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
@@ -72,19 +70,19 @@
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
-				<h1 class="txt-color-red login-header-big">Sigagro</h1>
+				<h1 class="txt-color-red login-header-big">Web App</h1>
 				<div class="hero">
 
 					<div class="pull-left login-desc-box-l">
-						<h4 class="paragraph-header">It's Okay to be Smart. Experience the simplicity of Sigagro, everywhere you go!</h4>
+						<h4 class="paragraph-header">The App for farmers using precision irrigation system. Experience the simplicity of Sig Agro, everywhere you go!</h4>
 
 
-					<!--
+					
 						<div class="login-app-icons">
-							<a href="javascript:void(0);" class="btn btn-danger btn-sm">Frontend Template</a>
-							<a href="javascript:void(0);" class="btn btn-danger btn-sm">Find out more</a>
+							<a href="http://www.sigagro.com.ar" target="_blank" class="btn btn-success btn-sm">Frontend Template</a>
+							<a href="http://www.sigagro.com.ar" target="_blank" class="btn btn-success btn-sm">Find out more</a>
 						</div>
-					-->
+					
 
 					</div>
 
@@ -94,20 +92,20 @@
 
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-	                <!--
-						<h5 class="about-heading">About SmartAdmin - Are you up to date?</h5>
+	                
+						<h5 class="about-heading">About Sig Agro - Are you up to date?</h5>
 						<p>
 							Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa.
 						</p>
-                    -->
+                   
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <!--
+                    
 						<h5 class="about-heading">Not just your average template!</h5>
 						<p>
 							Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi voluptatem accusantium!
 						</p>
-                    -->
+                   
 					</div>
 				</div>
 
@@ -134,11 +132,11 @@
 								<label class="input"> <i class="icon-append fa fa-lock"></i>
 									<input type="password" name="password">
 									<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b> </label>
-							<!--
+							
 								<div class="note">
 									<a href="forgotpassword.html">Forgot password?</a>
 								</div>
-                             -->
+                             
 
 							</section>
 
@@ -172,6 +170,7 @@
 	</div>
 
 </div>
+
 
 <!--================================================== -->
 

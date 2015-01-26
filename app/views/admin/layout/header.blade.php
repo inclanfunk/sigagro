@@ -3,7 +3,7 @@
 <div id="logo-group">
 
     <!-- PLACE YOUR LOGO HERE -->
-    <span id="logo"> <img src="{{URL::to('img/logo.png')}}" alt="SmartAdmin"> </span>
+    <span id="logo"> <img src="{{URL::to('img/logo.png')}}" alt="Sig Agro"> </span>
     <!-- END LOGO PLACEHOLDER -->
 
     <!-- Note: The activity badge color changes when clicked and resets the number to 0

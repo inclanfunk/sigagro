@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> Web Panel </title>
+		<title> Sig Agro | Admin</title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 
